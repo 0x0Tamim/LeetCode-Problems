@@ -4,19 +4,42 @@ public class Solution {
 
     public int missingNumber(int[] arr) {
         int n = arr.length;
-        int expectedSum = n * (n + 1) / 2; //expectedSum = n * (n + 1) / 2
-
         int i = 0;
-        int sum =0;//present sum
+
+        // Place each number at its correct index (Cycle Sort logic)
+        // Since the array contains numbers from 0 to n (excluding one number),
+        // we try to place each number 'x' at index 'x', except for 'n' (which is not present)
         while (i < arr.length) {
+            // Only swap if:
+            // - Current number is in the valid range (0 to n-1)
+            // - The number is not already in its correct position
+            // - arr[i] != arr[arr[i]] avoids unnecessary or infinite swaps (✔️ FIXED ERROR)
 
-            sum +=arr[i];
+            if (arr[i] < n && arr[i] != arr[arr[i]]) {
+                // ✔️ CORRECT SWAP: Swap arr[i] with arr[arr[i]]
+                // ❌ OLD MISTAKE: Used incorrect or self-overwriting swap logic like:
+                //     arr[i] = arr[arr[i]]; arr[arr[i]] = tmp; ← which corrupted values
 
-           i++;
+                int tmp = arr[arr[i]];
+                arr[arr[i]] = arr[i];
+                arr[i] = tmp;
+            } else {
+                // Move to next index if no swap is needed
+                i++;
+            }
         }
 
-        return expectedSum-sum;
+        // After placing all elements correctly,
+        // The first index where index != value is the missing number
+        for (int j = 0; j < n; j++) {
+            if (arr[j] != j)
+                return j;
+        }
+
+        // If all numbers are in the correct place, then the missing number is 'n'
+        return n;
     }
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
