@@ -18,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main obj = new Main();
-        int n = 10;  
+        int n = 10;
         int result = obj.fib(n);
         System.out.println("Fibonacci number for " + n + " is: " + result);
     }
