@@ -3,29 +3,19 @@ import java.util.*;
 public class Solution {
 
     public int missingNumber(int[] arr) {
+        int n = arr.length;
+        int expectedSum = n * (n + 1) / 2; //expectedSum = n * (n + 1) / 2
+
         int i = 0;
-        int []arr1 = new int[arr.length+1];
+        int sum =0;//present sum
+        while (i < arr.length) {
 
-        for(int j=0;j< arr.length;j++){
-            int e = arr[j];
-            arr1[e]=1;
+            sum +=arr[i];
+
+           i++;
         }
 
-        // Loop until we check all elements
-        while (i < arr1.length) {
-
-            // Correct position of current element should be (value - 1)
-            // Example: value = 3 → correct index = 2
-            if (arr1[i] != 1 ) {
-
-                // Swap current element with the element at its correct position
-              return i;
-            }
-            else i++;
-
-        }
-
-        return -1; // Placeholder
+        return expectedSum-sum;
     }
 
     public static void main(String[] args) {
