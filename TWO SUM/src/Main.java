@@ -14,17 +14,19 @@ public class Main {
         System.out.print("Enter target:");
         int t = sc.nextInt();
 
-        System.out.println("Answer:"+Arrays.toString(twosum(arr,t)));
+        System.out.println("Answer:"+Arrays.toString(twoSum(arr,t)));
     }
 
-    public static int[] twosum(int[] arr, int target) {
+    public static int[] twoSum(int[] arr, int target) {
+        HashMap<Integer,Integer>map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] + arr[j] == target) {
-                    return new int[]{i, j};
-                }
+
+            int complement = target - arr[i];
+            if(map.containsKey(complement)){
+                return new int[]{map.get(complement),i};
             }
+            map.put(arr[i],i );
         }
-        return new int[]{-1}; // Or throw an exception depending on the problem constraints
+        return new int[]{-1};
     }
 }
