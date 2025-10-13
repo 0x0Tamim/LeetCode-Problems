@@ -14,7 +14,7 @@ public class Main {
         System.out.print("Enter target:");
         int t = sc.nextInt();
 
-        System.out.println("Answer:"+Arrays.toString(twoSum(arr,t)));
+        System.out.println("Answer:" +Arrays.toString(twoSum(arr,t)));
     }
 
     public static int[] twoSum(int[] arr, int target) {
