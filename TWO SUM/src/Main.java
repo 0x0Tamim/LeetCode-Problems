@@ -10,23 +10,28 @@ public class Main {
         for(int i = 0;i<n;i++){
             arr[i]= sc.nextInt();
         }
-
         System.out.print("Enter target:");
         int t = sc.nextInt();
 
         System.out.println("Answer:" +Arrays.toString(twoSum(arr,t)));
     }
 
-    public static int[] twoSum(int[] arr, int target) {
-        HashMap<Integer,Integer>map = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
+    public static int[] twoSum(int[] nums, int target) {
 
-            int complement = target - arr[i];
-            if(map.containsKey(complement)){
-                return new int[]{map.get(complement),i};
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+
+            int need = target - nums[i];
+
+            if (map.containsKey(need)) {
+                return new int[]{ map.get(need), i };
             }
-            map.put(arr[i],i );
+
+            map.put(nums[i], i);
         }
-        return new int[]{-1};
+
+        return new int[]{-1, -1};
     }
+
 }
