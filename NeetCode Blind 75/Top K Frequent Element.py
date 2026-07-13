@@ -5,19 +5,22 @@ class Solution(object):
         for i in words:
             freq[i] = freq.get(i,0)+1
 
-        values_list = list(freq.values())
+        items = list(freq.items())
 
-        values_list.sort(reverse=True)
-        print(values_list)
+        items.sort(key= lambda x: x[1],reverse=True)
+        print(items)
+        sol = list()
+        for item in items[:k]:
+            sol.append(item[0])
 
-        for word,count in freq.items():
-            if v == values_list[1]:
-                print(k)
+        print(sol)
+
+
 
 
 sol = Solution()
 
-words = ["i", "love", "leetcode", "i", "love", "coding"]
+words = [1,2,2,3,3,3]
 
 sol.topKFrequent(words, 2)
 
