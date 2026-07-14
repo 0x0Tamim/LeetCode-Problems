@@ -1,11 +1,16 @@
 class Solution:
     def twoSum(self,nums,target):
+        
+        items = {}
 
-        for i in nums:
-            needed = target - i
+        for index,i in enumerate(nums):
             
-            if needed in nums:
-                return [nums.index(i), nums.index(needed)]
+            needed = target - i
+            if needed in items:
+                return [items.get(needed), index]
+            items[i] = nums.index(i)
+
+        print(items)        
             
 sol = Solution()
 print(sol.twoSum([2,3,4,5,6,7],9))
