@@ -8,7 +8,7 @@ class Solution:
             needed = target - i
             if needed in items:
                 return [items.get(needed), index]
-            items[i] = nums.index(i)
+            items[i] = index
 
         print(items)        
             
