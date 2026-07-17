@@ -1,28 +1,26 @@
 class Solution:
-
-    def encode(self, strs):
+    def encode(self,strs):
         string = ""
-
         for i in strs:
             string += str(len(i))+"#"+i
         return string
     
-    def decode(self, s):
-        newList = []
-        
+    def decode(self,line):
+        wordList = []
         i = 0
-        while i<len(s):
+        while i<len(line):
             j = i
-
-            while s[j] != "#":
+            while line[j] != "#":
                 j+=1
 
-            length = int(s[i:j])
-            print(j)
-            word = s[j+1:j+length+1]
-            newList.append(word)
-            i = j+1+length
-        return newList
+            length = int(line[i:j])
+            word = line[j+1:length+1+j]
+            wordList.append(word)
+            i = length+j+1
+        return wordList
+
+
+
     
 sol = Solution()
 encoded_string = sol.encode(["Hello World", "i am eliot", "anderson"])
